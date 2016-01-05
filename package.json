@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/anders462/requestheaderparser/issues"
   },
-  "homepage": "https://github.com/anders462/requestheaderparser#readme"
+  "homepage": "https://github.com/anders462/requestheaderparser#readme",
+  "engines": {
+    "node": "4.2.3"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
