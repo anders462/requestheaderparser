@@ -1,13 +1,14 @@
+'use strict'
 
+var parse = require('user-agent-parser')
 module.exports = function (req, callBack) {
-
-var userData = {ipaddress:null, language:null, software: null};
-var headers = req.headers;
 var userData = {};
-userData["language"] = req.headers["accept-language"];
-userData["software"] = req.headers["user-agent"];
+var uA = parse(req.headers["user-agent"]);
 userData["ipaddress"] = req.headers["x-forwarded-for"];
+userData["language"] = req.headers["accept-language"].split(",")[0];
+userData["software"] = uA.os.name + " " + uA.os.version;
 
-return callBack(null, JSON.stringify(userData));
+
+return callBack(null, userData);
 
 };
